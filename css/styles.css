@@ -1,0 +1,329 @@
+/* ========================================
+   SISTEMA DE MATRÍCULAS — IEP Corazón de Jesús
+   Design System & Global Styles (Pure CSS)
+   ======================================== */
+
+/* === CSS Variables (Design Tokens) === */
+:root {
+  /* Primary Palette — warm institutional tones */
+  --primary-dark: #8C452B;
+  --primary-medium: #D96236;
+  --primary-light: #F2A444;
+  --accent-dark: #D96B2B;
+  --accent-light: #F29441;
+
+  /* Neutral palette */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* Semantic colors */
+  --success: #059669;
+  --success-light: #d1fae5;
+  --warning: #d97706;
+  --warning-light: #fef3c7;
+  --danger: #dc2626;
+  --danger-light: #fee2e2;
+  --info: #2563eb;
+  --info-light: #dbeafe;
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+  /* Font */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
+
+/* === Number Input === */
+input[type="number"] { appearance: textfield; }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* === Focus Styles === */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-dark) !important;
+  box-shadow: 0 0 0 3px rgba(217, 107, 43, 0.15) !important;
+}
+
+/* === Selection === */
+::selection { background: rgba(217, 107, 43, 0.2); color: var(--gray-900); }
+
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+.animate-scale-in { animation: scaleIn 0.3s ease-out forwards; }
+
+.delay-1 { animation-delay: 0.05s; opacity: 0; }
+.delay-2 { animation-delay: 0.1s; opacity: 0; }
+.delay-3 { animation-delay: 0.15s; opacity: 0; }
+.delay-4 { animation-delay: 0.2s; opacity: 0; }
+.delay-5 { animation-delay: 0.25s; opacity: 0; }
+.delay-6 { animation-delay: 0.3s; opacity: 0; }
+
+/* === Utility Classes === */
+.hidden { display: none !important; }
+
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+img { max-width: 100%; height: auto; }
+
+/* === Common Components === */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8C452B, #D96236);
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(140,69,43,0.25);
+  transition: all 0.2s;
+}
+.btn-primary:hover { transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--gray-200);
+  background: white;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-300);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-success { color: #059669; background: #d1fae5; }
+.badge-danger { color: #dc2626; background: #fee2e2; }
+.badge-warning { color: #d97706; background: #fef3c7; }
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid var(--gray-100);
+  box-shadow: var(--shadow-sm);
+}
+
+.page { min-height: 100vh; }
+
+/* Spinner */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* === Section Title === */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--gray-100);
+}
+.section-title h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-800);
+}
+.section-title svg { color: #8C452B; }
+
+/* === Info Row === */
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.info-row svg { margin-top: 2px; flex-shrink: 0; color: var(--gray-400); }
+.info-row-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.info-row-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+/* Form elements used across pages */
+.form-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--gray-700);
+  background: var(--gray-50);
+  transition: all 0.2s;
+  outline: none;
+  font-family: var(--font-family);
+}
+.form-input:focus {
+  border-color: #D96B2B;
+  background: white;
+}
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-500);
+  margin-bottom: 6px;
+}
+.form-label .required { color: #dc2626; }
+
+/* Select with custom arrow */
+.form-select {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--gray-200);
+  font-size: 12px;
+  color: var(--gray-600);
+  background: white;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  min-width: 130px;
+  outline: none;
+}
+
+/* Success message */
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: #d1fae5;
+  border: 1px solid #6ee7b7;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #065f46;
+  font-weight: 600;
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* ===== RESPONSIVE — Global ===== */
+
+@media (max-width: 480px) {
+  .btn-primary { padding: 9px 14px; font-size: 11px; border-radius: 10px; }
+  .btn-outline { padding: 9px 12px; font-size: 11px; border-radius: 10px; }
+  .card { padding: 18px 14px; border-radius: 14px; }
+  .form-input { padding: 10px 12px; border-radius: 10px; font-size: 12px; }
+  .form-select { padding: 8px 28px 8px 10px; font-size: 11px; min-width: 0; }
+  .badge { padding: 3px 8px; font-size: 10px; }
+  .section-title { margin-bottom: 14px; padding-bottom: 10px; }
+  .section-title h3 { font-size: 13px; }
+}
+
+@media (max-width: 767px) {
+  .form-select { min-width: 0; width: auto; }
+}
