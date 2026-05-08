@@ -55,12 +55,12 @@ npx serve .
 
 ## Características
 
-- 🔐 Autenticación con roles
-- 📊 Dashboard con gráficos SVG (sin librerías)
-- 📋 Lista de matrículas con filtros en tiempo real
-- ✏️ Formulario multi-paso para nueva matrícula
-- 👤 Detalle completo del alumno
-- 📈 Reportes con visualizaciones
-- ⚙️ Configuración con tabs
-- 📱 Diseño responsive con sidebar colapsable
-- 🎨 Animaciones y micro-interacciones
+- Autenticación con roles
+- Dashboard con gráficos SVG (sin librerías)
+- Lista de matrículas con filtros en tiempo real
+- ormulario multi-paso para nueva matrícula
+- Detalle completo del alumno
+- Reportes con visualizaciones
+- onfiguración con tabs
+- Diseño responsive con sidebar colapsable
+- Animaciones y micro-interacciones
